@@ -99,40 +99,33 @@ float alpha = 0.8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#3b4252", /* black   */
-	"#bf616a", /* red     */
-	"#a3be8c", /* green   */
-	"#ebcb8b", /* yellow  */
-	"#81a1c1", /* blue    */
-	"#b48ead", /* magenta */
-	"#88c0d0", /* cyan    */
-	"#e5e9f0", /* white   */
+ [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+ [1] = "#ea6962", /* red     */
+ [2] = "#a9b665", /* green   */
+ [3] = "#d8a657", /* yellow  */
+ [4] = "#7daea3", /* blue    */
+ [5] = "#d3869b", /* magenta */
+ [6] = "#89b482", /* cyan    */
+ [7] = "#d4be98", /* white   */
 
-	/* 8 bright colors */
-	"#4c566a", /* black   */
-	"#bf616a", /* red     */
-	"#a3be8c", /* green   */
-	"#ebcb8b", /* yellow  */
-	"#81a1c1", /* blue    */
-	"#b48ead", /* magenta */
-	"#8fbcbb", /* cyan    */
-	"#eceff4", /* white   */
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#d8dee9", /* default foreground colour */
-	"#2e3440", /* default background colour */
+ /* 8 bright colors */
+ [8]  = "#928374", /* black   */
+ [9]  = "#ef938e", /* red     */
+ [10] = "#bbc585", /* green   */
+ [11] = "#e1bb7e", /* yellow  */
+ [12] = "#9dc2ba", /* blue    */
+ [13] = "#e1acbb", /* magenta */
+ [14] = "#a7c7a2", /* cyan    */
+ [15] = "#e2d3ba", /* white   */
 };
-
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 256;
-unsigned int defaultbg = 257;
-unsigned int defaultcs = 256;
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 257;
 
 /*
@@ -204,9 +197,9 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-    {ShiftMask, XK_Page_Up, kscrollup, {.i = -1}},
-    {ShiftMask, XK_Page_Down, kscrolldown, {.i = -1}},
-	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,               XK_l,           copyurl,        {.i =  0} },
 };
 
 /*
